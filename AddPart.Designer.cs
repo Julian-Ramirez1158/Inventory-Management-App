@@ -30,8 +30,8 @@ namespace BFM1_Task1
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioInHouse = new System.Windows.Forms.RadioButton();
+            this.radioOutsourced = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@ namespace BFM1_Task1
             this.NameBox = new System.Windows.Forms.TextBox();
             this.InventoryBox = new System.Windows.Forms.TextBox();
             this.PriceBox = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.MacID_CompNameBox = new System.Windows.Forms.TextBox();
             this.MaxBox = new System.Windows.Forms.TextBox();
             this.MinBox = new System.Windows.Forms.TextBox();
             this.AddPartSave = new System.Windows.Forms.Button();
@@ -60,29 +60,31 @@ namespace BFM1_Task1
             this.label1.TabIndex = 0;
             this.label1.Text = "Add Part";
             // 
-            // radioButton1
+            // radioInHouse
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(137, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(80, 20);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "In-House";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioInHouse.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.radioInHouse.AutoSize = true;
+            this.radioInHouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioInHouse.Location = new System.Drawing.Point(137, 11);
+            this.radioInHouse.Name = "radioInHouse";
+            this.radioInHouse.Size = new System.Drawing.Size(80, 20);
+            this.radioInHouse.TabIndex = 1;
+            this.radioInHouse.Text = "In-House";
+            this.radioInHouse.UseVisualStyleBackColor = true;
+            this.radioInHouse.CheckedChanged += new System.EventHandler(this.radioInHouse_CheckedChanged);
             // 
-            // radioButton2
+            // radioOutsourced
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(264, 9);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(95, 20);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Outsourced";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioOutsourced.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.radioOutsourced.AutoSize = true;
+            this.radioOutsourced.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioOutsourced.Location = new System.Drawing.Point(264, 9);
+            this.radioOutsourced.Name = "radioOutsourced";
+            this.radioOutsourced.Size = new System.Drawing.Size(95, 20);
+            this.radioOutsourced.TabIndex = 2;
+            this.radioOutsourced.Text = "Outsourced";
+            this.radioOutsourced.UseVisualStyleBackColor = true;
+            this.radioOutsourced.CheckedChanged += new System.EventHandler(this.radioOutsourced_CheckedChanged);
             // 
             // label2
             // 
@@ -146,16 +148,18 @@ namespace BFM1_Task1
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(104, 326);
+            this.label8.Location = new System.Drawing.Point(5, 326);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 16);
+            this.label8.Size = new System.Drawing.Size(177, 16);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Machine ID";
+            this.label8.Text = "Machine ID/Company Name";
             // 
             // PartIDBox
             // 
+            this.PartIDBox.Enabled = false;
             this.PartIDBox.Location = new System.Drawing.Point(203, 80);
             this.PartIDBox.Name = "PartIDBox";
             this.PartIDBox.Size = new System.Drawing.Size(156, 20);
@@ -182,12 +186,12 @@ namespace BFM1_Task1
             this.PriceBox.Size = new System.Drawing.Size(156, 20);
             this.PriceBox.TabIndex = 13;
             // 
-            // textBox5
+            // MacID_CompNameBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(203, 325);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(156, 20);
-            this.textBox5.TabIndex = 14;
+            this.MacID_CompNameBox.Location = new System.Drawing.Point(203, 325);
+            this.MacID_CompNameBox.Name = "MacID_CompNameBox";
+            this.MacID_CompNameBox.Size = new System.Drawing.Size(156, 20);
+            this.MacID_CompNameBox.TabIndex = 14;
             // 
             // MaxBox
             // 
@@ -232,7 +236,7 @@ namespace BFM1_Task1
             this.Controls.Add(this.AddPartSave);
             this.Controls.Add(this.MinBox);
             this.Controls.Add(this.MaxBox);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.MacID_CompNameBox);
             this.Controls.Add(this.PriceBox);
             this.Controls.Add(this.InventoryBox);
             this.Controls.Add(this.NameBox);
@@ -244,8 +248,8 @@ namespace BFM1_Task1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioOutsourced);
+            this.Controls.Add(this.radioInHouse);
             this.Controls.Add(this.label1);
             this.Name = "AddPart";
             this.Text = "Part";
@@ -257,8 +261,8 @@ namespace BFM1_Task1
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioInHouse;
+        private System.Windows.Forms.RadioButton radioOutsourced;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -270,7 +274,7 @@ namespace BFM1_Task1
         private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.TextBox InventoryBox;
         private System.Windows.Forms.TextBox PriceBox;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox MacID_CompNameBox;
         private System.Windows.Forms.TextBox MaxBox;
         private System.Windows.Forms.TextBox MinBox;
         private System.Windows.Forms.Button AddPartSave;

@@ -12,6 +12,5 @@ namespace BFM1_Task1.model
         public int MachineID { get; set; }
 
 
-
     }
 }
