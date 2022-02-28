@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BFM1_Task1.model
 {
-    public class Part // need to make this class abstract
+    public abstract class Part 
     {
 
         public int PartID { get; set; }

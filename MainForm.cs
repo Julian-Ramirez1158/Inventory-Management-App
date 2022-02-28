@@ -123,10 +123,30 @@ namespace BFM1_Task1
                 return;
             }
             this.Hide();
-            new ModifyPart().ShowDialog(); 
+
+            int rowIndex = dgvParts.CurrentRow.Index;
+
+            if (dgvParts.CurrentRow.DataBoundItem.GetType() == typeof(InHouse))
+            {
+                InHouse inHousePart = (InHouse)dgvParts.CurrentRow.DataBoundItem;
+                ModifyPart modPart = new ModifyPart(rowIndex, inHousePart);
+                modPart.inHouseButtonSwitch.Checked = true;
+                modPart.ShowDialog();
+                //    Part P = dgvParts.CurrentRow.DataBoundItem as Part;
+                //    Inventory.AllParts.Remove(P);
+            }
+            else
+            {
+                Outsourced outsourcedPart = (Outsourced)dgvParts.CurrentRow.DataBoundItem;
+                ModifyPart modPart = new ModifyPart(rowIndex, outsourcedPart);
+                modPart.outsourcedButtonSwitch.Checked = true;
+                modPart.ShowDialog();
+                //Part P = dgvParts.CurrentRow.DataBoundItem as Part;
+                //Inventory.AllParts.Remove(P);
+            }
             this.Show();
 
-            // parameterized constructor
+            
         }
 
         private void PartsDelete_Click(object sender, EventArgs e)

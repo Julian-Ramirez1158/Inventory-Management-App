@@ -17,18 +17,16 @@ namespace BFM1_Task1
 
         public static void PopulatePartsList() 
         {
-            AllParts.Add(
-                 new Part { PartID = 0, Name = "Wheel", Inventory = 15, Price = (decimal)12.11, Min = 5, Max = 25 }
-                );
-            AllParts.Add(
-                 new Part { PartID = 1, Name = "Pedal", Inventory = 11, Price = (decimal)8.22, Min = 5, Max = 25 }
-                );
-            AllParts.Add(
-                 new Part { PartID = 2, Name = "Chain", Inventory = 12, Price = (decimal)8.33, Min = 5, Max = 25 }
-                );
-            AllParts.Add(
-                 new Part { PartID = 3, Name = "Seat", Inventory = 8, Price = (decimal)4.55, Min = 2, Max = 15 }
-                );
+
+            Part sampleInPart1 = new InHouse(0, "Wheel", 15, (decimal)12.11, 5, 25, 42069);
+            Part sampleInPart2 = new InHouse(1, "Pedal", 11, (decimal)8.22, 5, 25, 0302);
+            Part sampleOutPart1 = new Outsourced(2, "Chain", 12, (decimal)8.33, 5, 25, "Relli Tech.");
+            Part sampleOutPart2 = new Outsourced(3, "Seat", 8, (decimal)4.55, 2, 15, "Crossmatch");
+
+            AllParts.Add(sampleInPart1);
+            AllParts.Add(sampleInPart2);
+            AllParts.Add(sampleOutPart1);
+            AllParts.Add(sampleOutPart2);
         }
 
         public static void PopulateProductsList()
@@ -59,15 +57,15 @@ namespace BFM1_Task1
             return;
         }
 
-        public static void AddPart(int partID, string name, int inventory, decimal price, int min, int max)
+        public static void AddPart()
         {
-            AllParts.Add(new Part { PartID = partID, Name = name, Inventory = inventory, Price = price, Min = min, Max = max });
             
         }
 
-        public void DeletePart()
+        public bool DeletePart()
         {
-            return;
+            
+            return true;
         }
 
         public void lookupPart(int id)
@@ -75,9 +73,34 @@ namespace BFM1_Task1
             return;
         }
 
-        public void UpdatePart()
+        public static void UpdateInHousePart(int rowIndex, InHouse inHousePart)
         {
-            return;
+
+            InHouse modPart = (InHouse)AllParts[rowIndex];
+
+            modPart.PartID = inHousePart.PartID;
+            modPart.Name = inHousePart.Name;
+            modPart.InStock = inHousePart.InStock;
+            modPart.Price = inHousePart.Price;
+            modPart.Max = inHousePart.Max;
+            modPart.Min = inHousePart.Min;
+            modPart.MachineID = inHousePart.MachineID;
+
+        }
+
+        public static void UpdateOutsourcedPart(int rowIndex, Outsourced outsourcedPart)
+        {
+
+            Outsourced modPart = (Outsourced)AllParts[rowIndex];
+
+            modPart.PartID = outsourcedPart.PartID;
+            modPart.Name = outsourcedPart.Name;
+            modPart.InStock = outsourcedPart.InStock;
+            modPart.Price = outsourcedPart.Price;
+            modPart.Max = outsourcedPart.Max;
+            modPart.Min = outsourcedPart.Min;
+            modPart.CompanyName = outsourcedPart.CompanyName;
+
         }
 
     }

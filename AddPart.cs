@@ -14,15 +14,6 @@ namespace BFM1_Task1
     public partial class AddPart : Form
     {
 
-        int _partID;
-        string _name;
-        int _inventory;
-        decimal _price;
-        int _min;
-        int _max;
-        int _machineID;
-        string _companyName;
-
         
         public AddPart()
         {
@@ -42,34 +33,24 @@ namespace BFM1_Task1
 
         private void AddPartSave_Click(object sender, EventArgs e)
         {
-            _partID = Inventory.AllParts[Inventory.AllParts.Count - 1].PartID + 1;
-            _name = NameBox.Text;
-            _inventory = Convert.ToInt32(InventoryBox.Text);
-            _price = Convert.ToDecimal(PriceBox.Text); 
-            _min = Convert.ToInt32(MinBox.Text);
-            _max = Convert.ToInt32(MaxBox.Text);
-
-            Inventory.AddPart(
-                _partID,
-                _name,
-                _inventory,
-                _price,
-                _min,
-                _max
-                );
-
-            
-            
+            int _partID = Inventory.AllParts[Inventory.AllParts.Count - 1].PartID + 1;
+            string _name = NameBox.Text;
+            int _inventory = Convert.ToInt32(InventoryBox.Text);
+            decimal _price = Convert.ToDecimal(PriceBox.Text); 
+            int _min = Convert.ToInt32(MinBox.Text);
+            int _max = Convert.ToInt32(MaxBox.Text);
 
             if (radioInHouse.Checked == true)
             {
-                _machineID = Convert.ToInt32(MacID_CompNameBox.Text);
-                new InHouse { PartID = _partID, Name = _name, Inventory = _inventory, Price = _price, Min = _min, Max = _max, MachineID = _machineID };
+                int _machineID = Convert.ToInt32(MacID_CompNameBox.Text);
+                Part InHousePart = new InHouse ( _partID, _name, _inventory, _price, _min,  _max, _machineID );
+                Inventory.AllParts.Add(InHousePart);
             }
             else if (radioOutsourced.Checked == true)
             {
-                _companyName = MacID_CompNameBox.Text;
-                new Outsourced { PartID = _partID, Name = _name, Inventory = _inventory, Price = _price, Min = _min, Max = _max, CompanyName = _companyName };
+                string _companyName = MacID_CompNameBox.Text;
+                Part OutSourcedPart = new Outsourced ( _partID, _name, _inventory, _price, _min, _max,  _companyName );
+                Inventory.AllParts.Add(OutSourcedPart);
             }
 
             this.Hide();
