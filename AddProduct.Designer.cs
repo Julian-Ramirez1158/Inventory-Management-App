@@ -46,12 +46,12 @@ namespace BFM1_Task1
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.IDBox = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.InventoryBox = new System.Windows.Forms.TextBox();
+            this.PriceBox = new System.Windows.Forms.TextBox();
+            this.MaxBox = new System.Windows.Forms.TextBox();
+            this.MinBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllCandidateParts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartsAssociated)).BeginInit();
             this.SuspendLayout();
@@ -217,59 +217,60 @@ namespace BFM1_Task1
             this.label9.TabIndex = 16;
             this.label9.Text = "Min";
             // 
-            // textBox2
+            // IDBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(217, 280);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
-            this.textBox2.TabIndex = 17;
+            this.IDBox.Enabled = false;
+            this.IDBox.Location = new System.Drawing.Point(217, 280);
+            this.IDBox.Name = "IDBox";
+            this.IDBox.Size = new System.Drawing.Size(156, 20);
+            this.IDBox.TabIndex = 17;
             // 
-            // textBox3
+            // NameBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(217, 336);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 20);
-            this.textBox3.TabIndex = 18;
+            this.NameBox.Location = new System.Drawing.Point(217, 336);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(156, 20);
+            this.NameBox.TabIndex = 18;
             // 
-            // textBox4
+            // InventoryBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(217, 395);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(156, 20);
-            this.textBox4.TabIndex = 19;
+            this.InventoryBox.Location = new System.Drawing.Point(217, 395);
+            this.InventoryBox.Name = "InventoryBox";
+            this.InventoryBox.Size = new System.Drawing.Size(156, 20);
+            this.InventoryBox.TabIndex = 19;
             // 
-            // textBox5
+            // PriceBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(217, 462);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(156, 20);
-            this.textBox5.TabIndex = 20;
+            this.PriceBox.Location = new System.Drawing.Point(217, 462);
+            this.PriceBox.Name = "PriceBox";
+            this.PriceBox.Size = new System.Drawing.Size(156, 20);
+            this.PriceBox.TabIndex = 20;
             // 
-            // textBox6
+            // MaxBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(217, 527);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(78, 20);
-            this.textBox6.TabIndex = 21;
+            this.MaxBox.Location = new System.Drawing.Point(217, 527);
+            this.MaxBox.Name = "MaxBox";
+            this.MaxBox.Size = new System.Drawing.Size(78, 20);
+            this.MaxBox.TabIndex = 21;
             // 
-            // textBox7
+            // MinBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(403, 527);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(78, 20);
-            this.textBox7.TabIndex = 22;
+            this.MinBox.Location = new System.Drawing.Point(403, 527);
+            this.MinBox.Name = "MinBox";
+            this.MinBox.Size = new System.Drawing.Size(78, 20);
+            this.MinBox.TabIndex = 22;
             // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 881);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.MinBox);
+            this.Controls.Add(this.MaxBox);
+            this.Controls.Add(this.PriceBox);
+            this.Controls.Add(this.InventoryBox);
+            this.Controls.Add(this.NameBox);
+            this.Controls.Add(this.IDBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -315,11 +316,11 @@ namespace BFM1_Task1
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox IDBox;
+        private System.Windows.Forms.TextBox NameBox;
+        private System.Windows.Forms.TextBox InventoryBox;
+        private System.Windows.Forms.TextBox PriceBox;
+        private System.Windows.Forms.TextBox MaxBox;
+        private System.Windows.Forms.TextBox MinBox;
     }
 }

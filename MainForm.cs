@@ -96,7 +96,7 @@ namespace BFM1_Task1
                         {
                             dgvParts.Rows[i].Selected = true;
                             partFound = true;
-
+                            
                         }
                     }
                 }
@@ -141,8 +141,6 @@ namespace BFM1_Task1
                 ModifyPart modPart = new ModifyPart(rowIndex, outsourcedPart);
                 modPart.outsourcedButtonSwitch.Checked = true;
                 modPart.ShowDialog();
-                //Part P = dgvParts.CurrentRow.DataBoundItem as Part;
-                //Inventory.AllParts.Remove(P);
             }
             this.Show();
 

@@ -75,33 +75,69 @@ namespace BFM1_Task1
 
         public static void UpdateInHousePart(int rowIndex, InHouse inHousePart)
         {
+            if (AllParts[rowIndex].GetType() == typeof(Outsourced))
+            {
+                Outsourced modPart = (Outsourced)AllParts[rowIndex];
+                AllParts.Remove(AllParts[rowIndex]);
 
-            InHouse modPart = (InHouse)AllParts[rowIndex];
+                InHouse inHousePartUpdate = new InHouse(
+                    inHousePart.PartID,
+                    inHousePart.Name,
+                    inHousePart.Inventory,
+                    inHousePart.Price,
+                    inHousePart.Min,
+                    inHousePart.Max,
+                    Convert.ToInt32(inHousePart.MachineID)
+                );
 
-            modPart.PartID = inHousePart.PartID;
-            modPart.Name = inHousePart.Name;
-            modPart.InStock = inHousePart.InStock;
-            modPart.Price = inHousePart.Price;
-            modPart.Max = inHousePart.Max;
-            modPart.Min = inHousePart.Min;
-            modPart.MachineID = inHousePart.MachineID;
+                AllParts.Add(inHousePartUpdate);
+            }
+            else
+            {
+                InHouse modPart = (InHouse)AllParts[rowIndex];
+                modPart.PartID = inHousePart.PartID;
+                modPart.Name = inHousePart.Name;
+                modPart.Inventory = inHousePart.Inventory;
+                modPart.Price = inHousePart.Price;
+                modPart.Max = inHousePart.Max;
+                modPart.Min = inHousePart.Min;
+                modPart.MachineID = inHousePart.MachineID;
+            }
 
         }
 
         public static void UpdateOutsourcedPart(int rowIndex, Outsourced outsourcedPart)
         {
+            if (AllParts[rowIndex].GetType() == typeof(InHouse))
+            {
+                InHouse modPart = (InHouse)AllParts[rowIndex];
+                AllParts.Remove(AllParts[rowIndex]);
 
-            Outsourced modPart = (Outsourced)AllParts[rowIndex];
+                Outsourced outSourcedPartUpdate = new Outsourced(
+                    outsourcedPart.PartID,
+                    outsourcedPart.Name,
+                    outsourcedPart.Inventory,
+                    outsourcedPart.Price,
+                    outsourcedPart.Min,
+                    outsourcedPart.Max,
+                    outsourcedPart.CompanyName.ToString()
+                );
 
-            modPart.PartID = outsourcedPart.PartID;
-            modPart.Name = outsourcedPart.Name;
-            modPart.InStock = outsourcedPart.InStock;
-            modPart.Price = outsourcedPart.Price;
-            modPart.Max = outsourcedPart.Max;
-            modPart.Min = outsourcedPart.Min;
-            modPart.CompanyName = outsourcedPart.CompanyName;
+                AllParts.Add(outSourcedPartUpdate);
+                // AllParts.OrderBy(order => order.PartID);
+            }
+            else
+            {
+                Outsourced modPart = (Outsourced)AllParts[rowIndex];
+                modPart.PartID = outsourcedPart.PartID;
+                modPart.Name = outsourcedPart.Name;
+                modPart.Inventory = outsourcedPart.Inventory;
+                modPart.Price = outsourcedPart.Price;
+                modPart.Max = outsourcedPart.Max;
+                modPart.Min = outsourcedPart.Min;
+                modPart.CompanyName = outsourcedPart.CompanyName;
+            }
 
         }
-
     }
 }
