@@ -31,9 +31,13 @@ namespace BFM1_Task1
 
         public static void PopulateProductsList()
         {
-            Products.Add(new Product { ProductID = 0, Name = "Red Bicycle", Inventory = 15, Price = (decimal)11.44, Min = 1, Max = 25 });
-            Products.Add(new Product{ ProductID = 1, Name = "Yellow Bicycle", Inventory = 19, Price = (decimal)9.66, Min = 1, Max = 2 });
-            Products.Add(new Product{ ProductID = 2, Name = "Blue Bicycle", Inventory = 5, Price = (decimal)11.44, Min = 1, Max = 25 });
+            Product sampleProduct1 = new Product(0, "Red Bicycle", 15, (decimal)11.44, 1, 25);
+            Product sampleProduct2 = new Product(1, "Yellow Bicycle", 19, (decimal)9.66, 1, 20);
+            Product sampleProduct3 = new Product(2, "Blue Bicycle", 5, (decimal)11.44, 1, 25);
+
+            Products.Add(sampleProduct1);
+            Products.Add(sampleProduct2);
+            Products.Add(sampleProduct3);
         }
 
         public void AddProduct()

@@ -46,12 +46,24 @@ namespace BFM1_Task1
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.ProductIDBox = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.InventoryBox = new System.Windows.Forms.TextBox();
+            this.PriceBox = new System.Windows.Forms.TextBox();
+            this.MaxBox = new System.Windows.Forms.TextBox();
+            this.MinBox = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllCandidateParts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartsAssociated)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +71,13 @@ namespace BFM1_Task1
             // dgvAllCandidateParts
             // 
             this.dgvAllCandidateParts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAllCandidateParts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12});
             this.dgvAllCandidateParts.Location = new System.Drawing.Point(670, 125);
             this.dgvAllCandidateParts.Name = "dgvAllCandidateParts";
             this.dgvAllCandidateParts.Size = new System.Drawing.Size(638, 248);
@@ -68,10 +87,18 @@ namespace BFM1_Task1
             // dgvPartsAssociated
             // 
             this.dgvPartsAssociated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPartsAssociated.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column6,
+            this.Column5});
             this.dgvPartsAssociated.Location = new System.Drawing.Point(670, 483);
             this.dgvPartsAssociated.Name = "dgvPartsAssociated";
             this.dgvPartsAssociated.Size = new System.Drawing.Size(638, 248);
             this.dgvPartsAssociated.TabIndex = 1;
+            this.dgvPartsAssociated.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPartsAssociated_DataBindingComplete);
             // 
             // label1
             // 
@@ -217,59 +244,132 @@ namespace BFM1_Task1
             this.label9.TabIndex = 16;
             this.label9.Text = "Min";
             // 
-            // textBox2
+            // ProductIDBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(217, 280);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
-            this.textBox2.TabIndex = 17;
+            this.ProductIDBox.Enabled = false;
+            this.ProductIDBox.Location = new System.Drawing.Point(217, 280);
+            this.ProductIDBox.Name = "ProductIDBox";
+            this.ProductIDBox.Size = new System.Drawing.Size(156, 20);
+            this.ProductIDBox.TabIndex = 17;
             // 
-            // textBox3
+            // NameBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(217, 336);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 20);
-            this.textBox3.TabIndex = 18;
+            this.NameBox.Location = new System.Drawing.Point(217, 336);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(156, 20);
+            this.NameBox.TabIndex = 18;
             // 
-            // textBox4
+            // InventoryBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(217, 395);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(156, 20);
-            this.textBox4.TabIndex = 19;
+            this.InventoryBox.Location = new System.Drawing.Point(217, 395);
+            this.InventoryBox.Name = "InventoryBox";
+            this.InventoryBox.Size = new System.Drawing.Size(156, 20);
+            this.InventoryBox.TabIndex = 19;
             // 
-            // textBox5
+            // PriceBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(217, 462);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(156, 20);
-            this.textBox5.TabIndex = 20;
+            this.PriceBox.Location = new System.Drawing.Point(217, 462);
+            this.PriceBox.Name = "PriceBox";
+            this.PriceBox.Size = new System.Drawing.Size(156, 20);
+            this.PriceBox.TabIndex = 20;
             // 
-            // textBox6
+            // MaxBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(217, 527);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(78, 20);
-            this.textBox6.TabIndex = 21;
+            this.MaxBox.Location = new System.Drawing.Point(217, 527);
+            this.MaxBox.Name = "MaxBox";
+            this.MaxBox.Size = new System.Drawing.Size(78, 20);
+            this.MaxBox.TabIndex = 21;
             // 
-            // textBox7
+            // MinBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(403, 527);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(78, 20);
-            this.textBox7.TabIndex = 22;
+            this.MinBox.Location = new System.Drawing.Point(403, 527);
+            this.MinBox.Name = "MinBox";
+            this.MinBox.Size = new System.Drawing.Size(78, 20);
+            this.MinBox.TabIndex = 22;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PartID";
+            this.Column1.HeaderText = "PartID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Name";
+            this.Column2.HeaderText = "Name";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Inventory";
+            this.Column3.HeaderText = "Inventory";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Price";
+            this.Column4.HeaderText = "Price";
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Min";
+            this.Column6.HeaderText = "Min";
+            this.Column6.Name = "Column6";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Max";
+            this.Column5.HeaderText = "Max";
+            this.Column5.Name = "Column5";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PartID";
+            this.Column7.HeaderText = "PartID";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Name";
+            this.Column8.HeaderText = "Name";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Inventory";
+            this.Column9.HeaderText = "Inventory";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "Price";
+            this.Column10.HeaderText = "Price";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Min";
+            this.Column11.HeaderText = "Min";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Max";
+            this.Column12.HeaderText = "Max";
+            this.Column12.Name = "Column12";
             // 
             // ModifyProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 881);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.MinBox);
+            this.Controls.Add(this.MaxBox);
+            this.Controls.Add(this.PriceBox);
+            this.Controls.Add(this.InventoryBox);
+            this.Controls.Add(this.NameBox);
+            this.Controls.Add(this.ProductIDBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -315,11 +415,23 @@ namespace BFM1_Task1
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox ProductIDBox;
+        private System.Windows.Forms.TextBox NameBox;
+        private System.Windows.Forms.TextBox InventoryBox;
+        private System.Windows.Forms.TextBox PriceBox;
+        private System.Windows.Forms.TextBox MaxBox;
+        private System.Windows.Forms.TextBox MinBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

@@ -14,34 +14,42 @@ namespace BFM1_Task1
 {
     public partial class AddProduct : Form
     {
+        BindingList<Part> addedAssParts = new BindingList<Part>();
         public AddProduct()
         {
             InitializeComponent();
 
+            // set data sources for both data grids
             dgvAllCandidateParts.DataSource = Inventory.AllParts;
+            dgvPartsAssociated.DataSource = addedAssParts;
 
             // selects full row in data grid
             dgvAllCandidateParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPartsAssociated.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // make data grid read only and turn multiselect off
             dgvAllCandidateParts.ReadOnly = true;
             dgvAllCandidateParts.MultiSelect = false;
+            dgvPartsAssociated.ReadOnly = true;
+            dgvPartsAssociated.MultiSelect = true;
 
             // remove blank bottom row
             dgvAllCandidateParts.AllowUserToAddRows = false;
+            dgvPartsAssociated.AllowUserToAddRows = false;
 
             // hides InStock column
             dgvAllCandidateParts.Columns["InStock"].Visible = false;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+            dgvPartsAssociated.Columns["InStock"].Visible = false;
         }
 
         private void julianBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvAllCandidateParts.ClearSelection();
+        }
+
+        private void dgvPartsAssociated_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvPartsAssociated.ClearSelection();
         }
 
         private void SearchParts_Click(object sender, EventArgs e)
@@ -74,5 +82,55 @@ namespace BFM1_Task1
                 MessageBox.Show("Part not found.");
             }
         }
+
+        private void AddProductSave_Click(object sender, EventArgs e)
+        {
+            int _productID = Inventory.Products[Inventory.Products.Count - 1].ProductID + 1;
+            string _name = NameBox.Text;
+            int _inventory = Convert.ToInt32(InventoryBox.Text);
+            decimal _price = Convert.ToDecimal(PriceBox.Text);
+            int _min = Convert.ToInt32(MinBox.Text);
+            int _max = Convert.ToInt32(MaxBox.Text);
+
+            Product newProduct = new Product(_productID, _name, _inventory, _price, _min, _max);
+            Inventory.Products.Add(newProduct);
+
+            foreach (Part assPart in addedAssParts)
+            {
+                newProduct.AddAssPart(assPart);
+            }
+            this.Hide();
+        }
+
+        private void AddAssPartButton_Click(object sender, EventArgs e)
+        {
+            Part addedAssPart = (Part)dgvAllCandidateParts.CurrentRow.DataBoundItem;
+            addedAssParts.Add(addedAssPart);
+        }
+
+        private void DeleteAssPartButton_Click(object sender, EventArgs e)
+        {
+            // check for row selection and null values
+            if (dgvPartsAssociated.CurrentRow == null || !dgvPartsAssociated.CurrentRow.Selected)
+            {
+                MessageBox.Show("Nothing selected! Please select a part.");
+                return;
+            }
+
+            DialogResult userChoice = MessageBox.Show("Are you sure you want to delete this part?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (userChoice == DialogResult.Yes)
+            {
+                Part P = dgvPartsAssociated.CurrentRow.DataBoundItem as Part;
+                addedAssParts.Remove(P);
+            }
+            else return;
+        }
+
+        private void button3_Click(object sender, EventArgs e) // cancel button
+        {
+            this.Hide();
+        }
+
     }
 }
