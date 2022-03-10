@@ -20,7 +20,7 @@ namespace BFM1_Task1
 
             Part sampleInPart1 = new InHouse(0, "Wheel", 15, (decimal)12.11, 5, 25, 42069);
             Part sampleInPart2 = new InHouse(1, "Pedal", 11, (decimal)8.22, 5, 25, 0302);
-            Part sampleOutPart1 = new Outsourced(2, "Chain", 12, (decimal)8.33, 5, 25, "Relli Tech.");
+            Part sampleOutPart1 = new Outsourced(2, "Chain", 12, (decimal)8.33, 5, 25, "Relli Tech");
             Part sampleOutPart2 = new Outsourced(3, "Seat", 8, (decimal)4.55, 2, 15, "Crossmatch");
 
             AllParts.Add(sampleInPart1);
@@ -56,9 +56,34 @@ namespace BFM1_Task1
             return;
         }
 
-        public void UpdateProduct()
+        public static void UpdateProduct(int productID, Product updatedProduct)
         {
-            return;
+            ////Products.Remove(Products[rowIndex]);
+
+            ////Product productUpdate = new Product(
+            ////    updatedProduct.ProductID,
+            ////    updatedProduct.Name,
+            ////    updatedProduct.Inventory,
+            ////    updatedProduct.Price,
+            ////    updatedProduct.Min,
+            ////    updatedProduct.Max
+            ////);
+
+            //Products.Add(productUpdate);
+
+            foreach (Product modPart in Products)
+            {
+                if (modPart.ProductID == productID)
+                {
+                    modPart.Name = updatedProduct.Name;
+                    modPart.Inventory = updatedProduct.Inventory;
+                    modPart.Price = updatedProduct.Price;
+                    modPart.Min = updatedProduct.Min;
+                    modPart.Max = updatedProduct.Max;
+                    modPart.AssociatedParts = updatedProduct.AssociatedParts;
+                    return;
+                }
+            }
         }
 
         public static void AddPart()

@@ -224,7 +224,13 @@ namespace BFM1_Task1
                 return;
             }
             this.Hide();
-            new ModifyProduct().ShowDialog();
+
+            int rowIndex = dgvParts.CurrentRow.Index;
+
+            Product updatedProduct = (Product)dgvProducts.CurrentRow.DataBoundItem;
+            ModifyProduct modProduct = new ModifyProduct(updatedProduct);
+            modProduct.ShowDialog();
+            //new ModifyProduct().ShowDialog();
             this.Show();
         }
 

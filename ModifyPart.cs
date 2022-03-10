@@ -13,7 +13,7 @@ namespace BFM1_Task1
 {
     public partial class ModifyPart : Form
     {
-        int _rowIndex;
+        private int _rowIndex;
         public ModifyPart(int rowIndex, InHouse inHousePart)
         {
             InitializeComponent();

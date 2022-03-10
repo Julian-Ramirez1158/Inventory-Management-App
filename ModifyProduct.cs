@@ -14,15 +14,25 @@ namespace BFM1_Task1
 {
     public partial class ModifyProduct : Form
     {
+        //private int _rowIndex;
         BindingList<Part> addedAssParts = new BindingList<Part>();
-        public ModifyProduct()
+        public ModifyProduct(Product updatedProduct)
         {
             InitializeComponent();
-            
+
+            //_rowIndex = rowIndex;
+
             dgvAllCandidateParts.DataSource = Inventory.AllParts;
             dgvPartsAssociated.DataSource = addedAssParts;
 
-            foreach (Part assPart in Product.AssociatedParts)
+            ProductIDBox.Text = updatedProduct.ProductID.ToString();
+            NameBox.Text = updatedProduct.Name;
+            InventoryBox.Text = updatedProduct.Inventory.ToString();
+            PriceBox.Text = updatedProduct.Price.ToString();
+            MinBox.Text = updatedProduct.Min.ToString();
+            MaxBox.Text = updatedProduct.Max.ToString();
+
+            foreach (Part assPart in updatedProduct.AssociatedParts)
             {
                 addedAssParts.Add(assPart);
             }
@@ -88,6 +98,52 @@ namespace BFM1_Task1
             {
                 MessageBox.Show("Part not found.");
             }
+        }
+
+        private void AddAssPartButton_Click(object sender, EventArgs e)
+        {
+            Part addedAssPart = (Part)dgvAllCandidateParts.CurrentRow.DataBoundItem;
+            addedAssParts.Add(addedAssPart);
+        }
+
+        private void DeleteAssPartButton_Click(object sender, EventArgs e)
+        {
+            // check for row selection and null values
+            if (dgvPartsAssociated.CurrentRow == null || !dgvPartsAssociated.CurrentRow.Selected)
+            {
+                MessageBox.Show("Nothing selected! Please select a part.");
+                return;
+            }
+
+            DialogResult userChoice = MessageBox.Show("Are you sure you want to delete this part?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (userChoice == DialogResult.Yes)
+            {
+                Part P = dgvPartsAssociated.CurrentRow.DataBoundItem as Part;
+                addedAssParts.Remove(P);
+            }
+            else return;
+        }
+
+        private void ModifyProductSave_Click(object sender, EventArgs e)
+        {
+            int _productID = Convert.ToInt32(ProductIDBox.Text);
+            string _name = NameBox.Text;
+            int _inventory = Convert.ToInt32(InventoryBox.Text);
+            decimal _price = Convert.ToDecimal(PriceBox.Text);
+            int _min = Convert.ToInt32(MinBox.Text);
+            int _max = Convert.ToInt32(MaxBox.Text);
+
+            Product updatedProduct = new Product(_productID, _name, _inventory, _price, _min, _max);
+
+            Inventory.UpdateProduct(_productID, updatedProduct);
+            foreach (Part assPart in addedAssParts)
+            {
+                updatedProduct.AddAssPart(assPart);
+            }
+            
+
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)

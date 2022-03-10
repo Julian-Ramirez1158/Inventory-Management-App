@@ -30,14 +30,26 @@ namespace BFM1_Task1
         private void InitializeComponent()
         {
             this.dgvAllCandidateParts = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPartsAssociated = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AddAssPartButton = new System.Windows.Forms.Button();
+            this.ModifyProductSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.DeleteAssPartButton = new System.Windows.Forms.Button();
             this.SearchParts = new System.Windows.Forms.Button();
             this.PartsSearchBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,18 +64,6 @@ namespace BFM1_Task1
             this.PriceBox = new System.Windows.Forms.TextBox();
             this.MaxBox = new System.Windows.Forms.TextBox();
             this.MinBox = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllCandidateParts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartsAssociated)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,42 @@ namespace BFM1_Task1
             this.dgvAllCandidateParts.TabIndex = 0;
             this.dgvAllCandidateParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.julianBindingComplete);
             // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PartID";
+            this.Column7.HeaderText = "PartID";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Name";
+            this.Column8.HeaderText = "Name";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Inventory";
+            this.Column9.HeaderText = "Inventory";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "Price";
+            this.Column10.HeaderText = "Price";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Min";
+            this.Column11.HeaderText = "Min";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Max";
+            this.Column12.HeaderText = "Max";
+            this.Column12.Name = "Column12";
+            // 
             // dgvPartsAssociated
             // 
             this.dgvPartsAssociated.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -99,6 +135,42 @@ namespace BFM1_Task1
             this.dgvPartsAssociated.Size = new System.Drawing.Size(638, 248);
             this.dgvPartsAssociated.TabIndex = 1;
             this.dgvPartsAssociated.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvPartsAssociated_DataBindingComplete);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PartID";
+            this.Column1.HeaderText = "PartID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Name";
+            this.Column2.HeaderText = "Name";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Inventory";
+            this.Column3.HeaderText = "Inventory";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Price";
+            this.Column4.HeaderText = "Price";
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Min";
+            this.Column6.HeaderText = "Min";
+            this.Column6.Name = "Column6";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Max";
+            this.Column5.HeaderText = "Max";
+            this.Column5.Name = "Column5";
             // 
             // label1
             // 
@@ -130,23 +202,25 @@ namespace BFM1_Task1
             this.label3.TabIndex = 4;
             this.label3.Text = "Parts Associated with this Product";
             // 
-            // button1
+            // AddAssPartButton
             // 
-            this.button1.Location = new System.Drawing.Point(1230, 388);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 33);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddAssPartButton.Location = new System.Drawing.Point(1230, 388);
+            this.AddAssPartButton.Name = "AddAssPartButton";
+            this.AddAssPartButton.Size = new System.Drawing.Size(78, 33);
+            this.AddAssPartButton.TabIndex = 5;
+            this.AddAssPartButton.Text = "Add";
+            this.AddAssPartButton.UseVisualStyleBackColor = true;
+            this.AddAssPartButton.Click += new System.EventHandler(this.AddAssPartButton_Click);
             // 
-            // button2
+            // ModifyProductSave
             // 
-            this.button2.Location = new System.Drawing.Point(1136, 794);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 33);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ModifyProductSave.Location = new System.Drawing.Point(1136, 794);
+            this.ModifyProductSave.Name = "ModifyProductSave";
+            this.ModifyProductSave.Size = new System.Drawing.Size(78, 33);
+            this.ModifyProductSave.TabIndex = 6;
+            this.ModifyProductSave.Text = "Save";
+            this.ModifyProductSave.UseVisualStyleBackColor = true;
+            this.ModifyProductSave.Click += new System.EventHandler(this.ModifyProductSave_Click);
             // 
             // button3
             // 
@@ -158,14 +232,15 @@ namespace BFM1_Task1
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // DeleteAssPartButton
             // 
-            this.button4.Location = new System.Drawing.Point(1230, 746);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 33);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
+            this.DeleteAssPartButton.Location = new System.Drawing.Point(1230, 746);
+            this.DeleteAssPartButton.Name = "DeleteAssPartButton";
+            this.DeleteAssPartButton.Size = new System.Drawing.Size(78, 33);
+            this.DeleteAssPartButton.TabIndex = 8;
+            this.DeleteAssPartButton.Text = "Delete";
+            this.DeleteAssPartButton.UseVisualStyleBackColor = true;
+            this.DeleteAssPartButton.Click += new System.EventHandler(this.DeleteAssPartButton_Click);
             // 
             // SearchParts
             // 
@@ -287,78 +362,6 @@ namespace BFM1_Task1
             this.MinBox.Size = new System.Drawing.Size(78, 20);
             this.MinBox.TabIndex = 22;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "PartID";
-            this.Column1.HeaderText = "PartID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Name";
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Inventory";
-            this.Column3.HeaderText = "Inventory";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Price";
-            this.Column4.HeaderText = "Price";
-            this.Column4.Name = "Column4";
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Min";
-            this.Column6.HeaderText = "Min";
-            this.Column6.Name = "Column6";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Max";
-            this.Column5.HeaderText = "Max";
-            this.Column5.Name = "Column5";
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "PartID";
-            this.Column7.HeaderText = "PartID";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Name";
-            this.Column8.HeaderText = "Name";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "Inventory";
-            this.Column9.HeaderText = "Inventory";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "Price";
-            this.Column10.HeaderText = "Price";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Min";
-            this.Column11.HeaderText = "Min";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "Max";
-            this.Column12.HeaderText = "Max";
-            this.Column12.Name = "Column12";
-            // 
             // ModifyProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,10 +381,10 @@ namespace BFM1_Task1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.PartsSearchBox);
             this.Controls.Add(this.SearchParts);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.DeleteAssPartButton);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ModifyProductSave);
+            this.Controls.Add(this.AddAssPartButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -403,10 +406,10 @@ namespace BFM1_Task1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddAssPartButton;
+        private System.Windows.Forms.Button ModifyProductSave;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button DeleteAssPartButton;
         private System.Windows.Forms.Button SearchParts;
         private System.Windows.Forms.TextBox PartsSearchBox;
         private System.Windows.Forms.Label label4;

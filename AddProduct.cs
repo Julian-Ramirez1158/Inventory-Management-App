@@ -83,24 +83,6 @@ namespace BFM1_Task1
             }
         }
 
-        private void AddProductSave_Click(object sender, EventArgs e)
-        {
-            int _productID = Inventory.Products[Inventory.Products.Count - 1].ProductID + 1;
-            string _name = NameBox.Text;
-            int _inventory = Convert.ToInt32(InventoryBox.Text);
-            decimal _price = Convert.ToDecimal(PriceBox.Text);
-            int _min = Convert.ToInt32(MinBox.Text);
-            int _max = Convert.ToInt32(MaxBox.Text);
-
-            Product newProduct = new Product(_productID, _name, _inventory, _price, _min, _max);
-            Inventory.Products.Add(newProduct);
-
-            foreach (Part assPart in addedAssParts)
-            {
-                newProduct.AddAssPart(assPart);
-            }
-            this.Hide();
-        }
 
         private void AddAssPartButton_Click(object sender, EventArgs e)
         {
@@ -125,6 +107,25 @@ namespace BFM1_Task1
                 addedAssParts.Remove(P);
             }
             else return;
+        }
+
+        private void AddProductSave_Click(object sender, EventArgs e)
+        {
+            int _productID = Inventory.Products[Inventory.Products.Count - 1].ProductID + 1;
+            string _name = NameBox.Text;
+            int _inventory = Convert.ToInt32(InventoryBox.Text);
+            decimal _price = Convert.ToDecimal(PriceBox.Text);
+            int _min = Convert.ToInt32(MinBox.Text);
+            int _max = Convert.ToInt32(MaxBox.Text);
+
+            Product newProduct = new Product(_productID, _name, _inventory, _price, _min, _max);
+            Inventory.Products.Add(newProduct);
+
+            foreach (Part assPart in addedAssParts)
+            {
+                newProduct.AddAssPart(assPart);
+            }
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e) // cancel button

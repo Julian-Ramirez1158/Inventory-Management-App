@@ -10,7 +10,7 @@ namespace BFM1_Task1.model
     public class Product 
     {
 
-        public static BindingList<Part> AssociatedParts = new BindingList<Part>();
+        public BindingList<Part> AssociatedParts = new BindingList<Part>();
 
         public int ProductID { get; set; } 
         public string Name { get; set; }

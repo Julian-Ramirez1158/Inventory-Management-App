@@ -29,6 +29,7 @@ namespace BFM1_Task1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.radioInHouse = new System.Windows.Forms.RadioButton();
             this.radioOutsourced = new System.Windows.Forms.RadioButton();
@@ -48,6 +49,8 @@ namespace BFM1_Task1
             this.MinBox = new System.Windows.Forms.TextBox();
             this.AddPartSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -227,6 +230,10 @@ namespace BFM1_Task1
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +260,7 @@ namespace BFM1_Task1
             this.Controls.Add(this.label1);
             this.Name = "AddPart";
             this.Text = "Part";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +287,6 @@ namespace BFM1_Task1
         private System.Windows.Forms.TextBox MinBox;
         private System.Windows.Forms.Button AddPartSave;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
