@@ -23,7 +23,7 @@ namespace BFM1_Task1
             
 
             // links data source (binding list in Part class) to GUI
-            dgvParts.DataSource = Inventory.AllParts; // moving to inventory
+            dgvParts.DataSource = Inventory.AllParts; 
 
             // selects full row in data grid
             dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -132,8 +132,6 @@ namespace BFM1_Task1
                 ModifyPart modPart = new ModifyPart(rowIndex, inHousePart);
                 modPart.inHouseButtonSwitch.Checked = true;
                 modPart.ShowDialog();
-                //    Part P = dgvParts.CurrentRow.DataBoundItem as Part;
-                //    Inventory.AllParts.Remove(P);
             }
             else
             {
@@ -142,6 +140,9 @@ namespace BFM1_Task1
                 modPart.outsourcedButtonSwitch.Checked = true;
                 modPart.ShowDialog();
             }
+
+            Inventory.AllParts.OrderBy(order => order.PartID);
+
             this.Show();
 
             
@@ -164,9 +165,6 @@ namespace BFM1_Task1
                 Inventory.AllParts.Remove(P);
             }
             else return;
-            
-
-            // int Index = dgvParts.CurrentCell.RowIndex;
 
         }
 
@@ -230,7 +228,6 @@ namespace BFM1_Task1
             Product updatedProduct = (Product)dgvProducts.CurrentRow.DataBoundItem;
             ModifyProduct modProduct = new ModifyProduct(updatedProduct);
             modProduct.ShowDialog();
-            //new ModifyProduct().ShowDialog();
             this.Show();
         }
 
@@ -256,9 +253,6 @@ namespace BFM1_Task1
 
             if (userChoice == DialogResult.Yes)
             {
-
-                // add validation to ensure that products cannot be deleted if parts are associated with it
-
                 Inventory.Products.Remove(P);
             }
             else return;

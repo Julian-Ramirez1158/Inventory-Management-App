@@ -14,13 +14,10 @@ namespace BFM1_Task1
 {
     public partial class ModifyProduct : Form
     {
-        //private int _rowIndex;
         BindingList<Part> addedAssParts = new BindingList<Part>();
         public ModifyProduct(Product updatedProduct)
         {
             InitializeComponent();
-
-            //_rowIndex = rowIndex;
 
             dgvAllCandidateParts.DataSource = Inventory.AllParts;
             dgvPartsAssociated.DataSource = addedAssParts;

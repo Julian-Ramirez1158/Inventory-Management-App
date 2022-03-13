@@ -106,7 +106,7 @@ namespace BFM1_Task1
                 return;
             }
 
-            if (string.IsNullOrEmpty(MacID_CompNameBox.Text))
+            if (string.IsNullOrEmpty(MacID_CompNameBox.Text) || string.IsNullOrWhiteSpace(MacID_CompNameBox.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Machine ID or Company Name is required. Please select a radio button and provide a value.");
                 errorProvider1.SetError(MacID_CompNameBox, dialogResult.ToString());

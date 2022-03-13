@@ -42,7 +42,6 @@ namespace BFM1_Task1
 
         public void AddProduct()
         {
-            //add product to products
             return;
         }
 
@@ -141,7 +140,7 @@ namespace BFM1_Task1
                 );
 
                 AllParts.Add(outSourcedPartUpdate);
-                // AllParts.OrderBy(order => order.PartID);
+                
             }
             else
             {

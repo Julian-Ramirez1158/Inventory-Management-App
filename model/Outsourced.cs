@@ -11,8 +11,6 @@ namespace BFM1_Task1.model
         
         public string CompanyName { get; set; }
 
-
-
         public Outsourced(int _partID, string _name, int _inventory, decimal _price, int _min, int _max, string _companyName)
         {
             PartID = _partID;
