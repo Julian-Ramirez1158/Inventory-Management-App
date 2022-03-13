@@ -244,11 +244,18 @@ namespace BFM1_Task1
                 return;
             }
 
+            Product P = dgvProducts.CurrentRow.DataBoundItem as Product;
+
+            if (P.AssociatedParts.Count > 0)
+            {
+                MessageBox.Show("Error: Cannot delete a product that has parts associated with it. Please remove any associated parts.");
+                return;
+            }
+
             DialogResult userChoice = MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButtons.YesNo);
 
             if (userChoice == DialogResult.Yes)
             {
-                Product P = dgvProducts.CurrentRow.DataBoundItem as Product;
 
                 // add validation to ensure that products cannot be deleted if parts are associated with it
 

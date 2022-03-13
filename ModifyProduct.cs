@@ -129,10 +129,35 @@ namespace BFM1_Task1
         {
             int _productID = Convert.ToInt32(ProductIDBox.Text);
             string _name = NameBox.Text;
-            int _inventory = Convert.ToInt32(InventoryBox.Text);
-            decimal _price = Convert.ToDecimal(PriceBox.Text);
-            int _min = Convert.ToInt32(MinBox.Text);
-            int _max = Convert.ToInt32(MaxBox.Text);
+            int _inventory;
+            decimal _price;
+            int _min;
+            int _max;
+
+            try
+            {
+                _inventory = Convert.ToInt32(InventoryBox.Text);
+                _price = Convert.ToDecimal(PriceBox.Text);
+                _min = Convert.ToInt32(MinBox.Text);
+                _max = Convert.ToInt32(MaxBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Error: Inventory, Price, Min, and Max fields need to be numeric values.");
+                return;
+            }
+
+            if (_max < _min)
+            {
+                MessageBox.Show("Error: Max value should be greater than Min value.");
+                return;
+            }
+
+            if (_inventory > _max || _inventory < _min)
+            {
+                MessageBox.Show("Error: Inventory value should be between Min and Max values.");
+                return;
+            }
 
             Product updatedProduct = new Product(_productID, _name, _inventory, _price, _min, _max);
 

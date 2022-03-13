@@ -191,6 +191,7 @@ namespace BFM1_Task1
             // 
             // MacID_CompNameBox
             // 
+            this.MacID_CompNameBox.Enabled = false;
             this.MacID_CompNameBox.Location = new System.Drawing.Point(203, 325);
             this.MacID_CompNameBox.Name = "MacID_CompNameBox";
             this.MacID_CompNameBox.Size = new System.Drawing.Size(156, 20);

@@ -58,18 +58,6 @@ namespace BFM1_Task1
 
         public static void UpdateProduct(int productID, Product updatedProduct)
         {
-            ////Products.Remove(Products[rowIndex]);
-
-            ////Product productUpdate = new Product(
-            ////    updatedProduct.ProductID,
-            ////    updatedProduct.Name,
-            ////    updatedProduct.Inventory,
-            ////    updatedProduct.Price,
-            ////    updatedProduct.Min,
-            ////    updatedProduct.Max
-            ////);
-
-            //Products.Add(productUpdate);
 
             foreach (Product modPart in Products)
             {
