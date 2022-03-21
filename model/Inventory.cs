@@ -17,7 +17,6 @@ namespace BFM1_Task1
 
         public static void PopulatePartsList() 
         {
-
             Part sampleInPart1 = new InHouse(0, "Wheel", 15, (decimal)12.11, 5, 25, 42069);
             Part sampleInPart2 = new InHouse(1, "Pedal", 11, (decimal)8.22, 5, 25, 0302);
             Part sampleOutPart1 = new Outsourced(2, "Chain", 12, (decimal)8.33, 5, 25, "Relli Tech");
@@ -38,55 +37,6 @@ namespace BFM1_Task1
             Products.Add(sampleProduct1);
             Products.Add(sampleProduct2);
             Products.Add(sampleProduct3);
-        }
-
-        public void AddProduct()
-        {
-            return;
-        }
-
-        public bool RemoveProduct()
-        {
-            return true;
-        }
-
-        public void lookupProduct(int id)
-        {
-            return;
-        }
-
-        public static void UpdateProduct(int productID, Product updatedProduct)
-        {
-
-            foreach (Product modPart in Products)
-            {
-                if (modPart.ProductID == productID)
-                {
-                    modPart.Name = updatedProduct.Name;
-                    modPart.Inventory = updatedProduct.Inventory;
-                    modPart.Price = updatedProduct.Price;
-                    modPart.Min = updatedProduct.Min;
-                    modPart.Max = updatedProduct.Max;
-                    modPart.AssociatedParts = updatedProduct.AssociatedParts;
-                    return;
-                }
-            }
-        }
-
-        public static void AddPart()
-        {
-            
-        }
-
-        public bool DeletePart()
-        {
-            
-            return true;
-        }
-
-        public void lookupPart(int id)
-        {
-            return;
         }
 
         public static void UpdateInHousePart(int rowIndex, InHouse inHousePart)
@@ -154,6 +104,24 @@ namespace BFM1_Task1
                 modPart.CompanyName = outsourcedPart.CompanyName;
             }
 
+        }
+
+        public static void UpdateProduct(int productID, Product updatedProduct)
+        {
+
+            foreach (Product modPart in Products)
+            {
+                if (modPart.ProductID == productID)
+                {
+                    modPart.Name = updatedProduct.Name;
+                    modPart.Inventory = updatedProduct.Inventory;
+                    modPart.Price = updatedProduct.Price;
+                    modPart.Min = updatedProduct.Min;
+                    modPart.Max = updatedProduct.Max;
+                    modPart.AssociatedParts = updatedProduct.AssociatedParts;
+                    return;
+                }
+            }
         }
     }
 }
